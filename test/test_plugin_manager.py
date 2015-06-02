@@ -9,6 +9,7 @@ import ConfigParser
 
 
 class TestPluginManager(unittest.TestCase):
+
     def test_init(self):
         config_file = os.path.dirname(os.path.realpath(__file__)) + '/../conf/settings.cfg'
         config_file = os.path.realpath(config_file)
@@ -28,10 +29,12 @@ class TestPluginManager(unittest.TestCase):
         self._test_obj(_driver, Driver)
         self._test_obj(_datastore, Datastore)
 
+
     def _test_obj(self, obj, cls):
         self.assertIsNotNone(obj)
         self.assertTrue(isinstance(obj, BasePlugin), '%s does not extend base plugin' % obj)
         self.assertTrue(isinstance(obj, cls), '%s does not extend %s' % (obj, cls))
+
 
     def test_driver(self):
         config_file = os.path.dirname(os.path.realpath(__file__)) + '/../conf/settings.cfg'
@@ -42,6 +45,7 @@ class TestPluginManager(unittest.TestCase):
         plugin_manager = PluginManager(config)
         _driver = plugin_manager.get_driver()
         self.assertTrue(_driver.update(_driver), "Hello Jasdasdasdohn Doe2")
+
 
 if __name__ == '__main__':
     unittest.main()

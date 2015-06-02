@@ -1,6 +1,4 @@
-##
 # Copy settings.cfg.default to settigns.cfg to get started.
-##
 
 [DEFAULT]
 # How often to check for new resources in seconds.
@@ -14,12 +12,9 @@ driver_interval=60
 start_server = false
 
 
-##
 # Plugins
-#
 # All plugins require a module_name and plugin_class.
 # Only one plugin of each type can be active at one time.
-##
 [datastore]
 module_name = elasticd.ext.inmemory_datastore
 plugin_class = InmemoryDatastore

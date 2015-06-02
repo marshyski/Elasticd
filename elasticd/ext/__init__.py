@@ -1,1 +1,1 @@
-__author__ = 'patelm'
+__author__ = "FINRA opensource"

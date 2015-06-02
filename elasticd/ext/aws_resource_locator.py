@@ -3,16 +3,18 @@ from elasticd.resource import IPResource
 import boto
 
 
-
 class AWSinstanceLocator(ResourceLocator):
+
     def __init__(self, config):
         ResourceLocator.__init__(self, config)
+
 
     def get_resources(self):
         ResourceLocator.get_resources(self)
         ec2 = boto.connect_ec2()
-        #search for the backend servers
-        #todo read the filter from configuration
+        ''' Search for the backend servers '''
+        ''' Todo read the filter from configuration '''
+
         reservations = ec2.get_all_instances(filters={'tag:AGS': 'fnrw',
                                                       'tag:SDLC': 'DEV',
                                                       'tag:Purpose': 'finra.org_drupal',
@@ -24,5 +26,3 @@ class AWSinstanceLocator(ResourceLocator):
             backends.append(ip_address)
 
         return backends
-
-

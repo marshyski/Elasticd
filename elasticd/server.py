@@ -1,12 +1,9 @@
-__author__ = 'patelm'
 from flask import Flask
 from registrar import Registrar
 
 app = Flask(__name__.split('.')[0])
-#app.debug = True
 
 _registrar = None
-
 
 def set_registrar(registrar):
     global _registrar
@@ -15,7 +12,7 @@ def set_registrar(registrar):
 
 @app.route('/')
 def home():
-    return 'welcoe'
+    return 'welcome'
 
 
 @app.route('/register')

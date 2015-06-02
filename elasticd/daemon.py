@@ -7,6 +7,7 @@ registrar = None
 
 
 def start(_registrar, _locator, config):
+    ''' Start AP jobs with interval defined in settings.cfg '''
     global resource_locator, registrar
     locate_interval = config.getint('DEFAULT', 'locate_interval')
     driver_interval = config.getint('DEFAULT', 'driver_interval')
@@ -15,7 +16,7 @@ def start(_registrar, _locator, config):
     scheduler.add_job(process_locator, 'interval', seconds=locate_interval)
     scheduler.add_job(process_registrar, 'interval', seconds=driver_interval)
     scheduler.print_jobs()
-    #THIS WILL NOT RETURN
+    ''' THIS WILL NOT RETURN '''
     scheduler.start()
 
 
@@ -24,6 +25,7 @@ def process_locator():
     for item in resources:
         print 'register {0}'.format(item)
         registrar.register(item)
+
 
 def process_registrar():
     registrar.process()
